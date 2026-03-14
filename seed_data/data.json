@@ -1,0 +1,156 @@
+{
+    "topics": [
+        {
+            "name": "Artificial Intelligence",
+            "keywords": ["ai", "machinelearning", "deeplearning", "neural", "nlp"],
+            "tweet_count": 15,
+            "avg_sentiment": 0.35
+        },
+        {
+            "name": "Web Development",
+            "keywords": ["javascript", "react", "webdev", "frontend", "api"],
+            "tweet_count": 12,
+            "avg_sentiment": 0.18
+        },
+        {
+            "name": "Cloud & DevOps",
+            "keywords": ["cloudcomputing", "devops", "docker", "kubernetes"],
+            "tweet_count": 8,
+            "avg_sentiment": 0.22
+        },
+        {
+            "name": "Cybersecurity",
+            "keywords": ["cybersecurity", "security", "privacy", "breach"],
+            "tweet_count": 6,
+            "avg_sentiment": -0.15
+        },
+        {
+            "name": "Data Science",
+            "keywords": ["datascience", "bigdata", "analytics", "python"],
+            "tweet_count": 10,
+            "avg_sentiment": 0.28
+        }
+    ],
+    "tweets": [
+        {
+            "text": "Just discovered #AI and it's absolutely amazing! The future is here. #MachineLearning",
+            "username": "@tech_insider",
+            "hashtags": ["#AI", "#MachineLearning"],
+            "mentions": []
+        },
+        {
+            "text": "Incredible progress in #DeepLearning today! So excited about what's coming next.",
+            "username": "@ai_enthusiast",
+            "hashtags": ["#DeepLearning"],
+            "mentions": []
+        },
+        {
+            "text": "The new #React release is fantastic! Best update in years #JavaScript",
+            "username": "@dev_thoughts",
+            "hashtags": ["#React", "#JavaScript"],
+            "mentions": []
+        },
+        {
+            "text": "Another #Cybersecurity outage today. This is becoming unacceptable.",
+            "username": "@cyber_sec",
+            "hashtags": ["#Cybersecurity"],
+            "mentions": []
+        },
+        {
+            "text": "Frustrated with the #CloudComputing API changes. Everything is broken again.",
+            "username": "@cloud_ops",
+            "hashtags": ["#CloudComputing"],
+            "mentions": []
+        },
+        {
+            "text": "Love how #Python is transforming the industry. Great work by the community!",
+            "username": "@data_nerd",
+            "hashtags": ["#Python"],
+            "mentions": []
+        },
+        {
+            "text": "New #DataScience report released today. Some interesting data points.",
+            "username": "@market_pulse",
+            "hashtags": ["#DataScience"],
+            "mentions": []
+        },
+        {
+            "text": "Working on a #Docker proof of concept this week. #Kubernetes",
+            "username": "@cloud_ops",
+            "hashtags": ["#Docker", "#Kubernetes"],
+            "mentions": []
+        },
+        {
+            "text": "The decline of #JavaScript quality is alarming. Standards are dropping.",
+            "username": "@web3_builder",
+            "hashtags": ["#JavaScript"],
+            "mentions": []
+        },
+        {
+            "text": "Successfully deployed our #AI solution! The results are impressive. #NLP",
+            "username": "@ml_engineer",
+            "hashtags": ["#AI", "#NLP"],
+            "mentions": []
+        },
+        {
+            "text": "Horrible experience with #CloudComputing support. No response for weeks.",
+            "username": "@startup_life",
+            "hashtags": ["#CloudComputing"],
+            "mentions": []
+        },
+        {
+            "text": "This #MachineLearning tutorial is brilliant! Finally understand the concepts.",
+            "username": "@code_master",
+            "hashtags": ["#MachineLearning"],
+            "mentions": []
+        },
+        {
+            "text": "Comparing #React frameworks for our next project. #WebDev",
+            "username": "@product_mgr",
+            "hashtags": ["#React", "#WebDev"],
+            "mentions": []
+        },
+        {
+            "text": "Worried about #Cybersecurity privacy concerns. The data handling is problematic.",
+            "username": "@digital_nomad",
+            "hashtags": ["#Cybersecurity"],
+            "mentions": []
+        },
+        {
+            "text": "Best conference talk on #BigData I've ever seen. Truly inspiring!",
+            "username": "@data_nerd",
+            "hashtags": ["#BigData"],
+            "mentions": []
+        },
+        {
+            "text": "Our #DevOps adoption has been phenomenal. Outstanding team effort!",
+            "username": "@cloud_ops",
+            "hashtags": ["#DevOps"],
+            "mentions": []
+        },
+        {
+            "text": "Attending the #AI conference next week. Anyone else going?",
+            "username": "@tech_insider",
+            "hashtags": ["#AI"],
+            "mentions": []
+        },
+        {
+            "text": "The #API pricing changes are unfair to small developers. #WebDev",
+            "username": "@open_source",
+            "hashtags": ["#API", "#WebDev"],
+            "mentions": []
+        },
+        {
+            "text": "Excited to share my new #Python project! Built with love and passion.",
+            "username": "@code_master",
+            "hashtags": ["#Python"],
+            "mentions": []
+        },
+        {
+            "text": "Reading about #Analytics trends for 2024. The landscape is changing.",
+            "username": "@market_pulse",
+            "hashtags": ["#Analytics"],
+            "mentions": []
+        }
+    ]
+}
