@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% block title %}SentimentStream - Live Dashboard{% endblock %}
+
+{% block content %}
+<div class="dashboard">
+    <div class="page-header">
+        <h1>Live Stream Dashboard</h1>
+        <p class="subtitle">Real-time sentiment analysis of the social media stream</p>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="stats-row">
+        <div class="stat-card">
+            <div class="stat-value" id="total-tweets">{{ stats.total }}</div>
+            <div class="stat-label">Total Tweets</div>
+        </div>
+        <div class="stat-card stat-positive">
+            <div class="stat-value" id="positive-count">{{ stats.positive }}</div>
+            <div class="stat-label">Positive</div>
+        </div>
+        <div class="stat-card stat-negative">
+            <div class="stat-value" id="negative-count">{{ stats.negative }}</div>
+            <div class="stat-label">Negative</div>
+        </div>
+        <div class="stat-card stat-neutral">
+            <div class="stat-value" id="neutral-count">{{ stats.neutral }}</div>
+            <div class="stat-label">Neutral</div>
+        </div>
+    </div>
+
+    <div class="dashboard-grid">
+        <!-- Sentiment Gauge -->
+        <div class="card gauge-card">
+            <h2 class="card-title">Sentiment Gauge</h2>
+            <div class="gauge-container">
+                <canvas id="sentiment-gauge" width="280" height="180"></canvas>
+                <div class="gauge-value" id="gauge-score">{{ stats.avg_score }}</div>
+                <div class="gauge-label">Average Sentiment</div>
+            </div>
+        </div>
+
+        <!-- Stream Controls -->
+        <div class="card controls-card">
+            <h2 class="card-title">Stream Controls</h2>
+            <div class="controls">
+                <button class="btn btn-primary" id="btn-stream" onclick="toggleStream()">
+                    Start Stream
+                </button>
+                <button class="btn btn-secondary" onclick="fetchBatch()">
+                    Fetch Batch
+                </button>
+                <button class="btn btn-outline" onclick="generateTweets(20)">
+                    Generate 20
+                </button>
+            </div>
+            <div class="stream-status">
+                <span class="status-dot" id="stream-dot"></span>
+                <span id="stream-status-text">Stream paused</span>
+            </div>
+            <div class="filter-row">
+                <label>Filter:</label>
+                <select id="sentiment-filter" onchange="applyFilter()">
+                    <option value="">All</option>
+                    <option value="positive">Positive</option>
+                    <option value="negative">Negative</option>
+                    <option value="neutral">Neutral</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tweet Stream -->
+    <div class="card stream-card">
+        <h2 class="card-title">
+            Tweet Stream
+            <span class="tweet-counter" id="stream-counter">{{ tweets|length }} tweets</span>
+        </h2>
+        <div class="tweet-stream" id="tweet-stream">
+            {% for tweet in tweets %}
+            <div class="tweet-item sentiment-{{ tweet.sentiment_label }}">
+                <div class="tweet-header">
+                    <span class="tweet-username">{{ tweet.username }}</span>
+                    <span class="tweet-sentiment badge-{{ tweet.sentiment_label }}">
+                        {{ tweet.sentiment_label }} ({{ tweet.sentiment_score }})
+                    </span>
+                </div>
+                <div class="tweet-text">{{ tweet.text }}</div>
+                <div class="tweet-meta">
+                    {% for tag in tweet.hashtags %}
+                    <span class="hashtag">{{ tag }}</span>
+                    {% endfor %}
+                    <span class="tweet-time">{{ tweet.created_at }}</span>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

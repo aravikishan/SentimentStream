@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block title %}SentimentStream - Trends{% endblock %}
+
+{% block content %}
+<div class="trends-page">
+    <div class="page-header">
+        <h1>Trend Analysis</h1>
+        <p class="subtitle">Sentiment trends, volume patterns, and alerts</p>
+    </div>
+
+    <!-- Alerts -->
+    <div class="card alerts-card" id="alerts-container">
+        <h2 class="card-title">Active Alerts</h2>
+        <div id="alerts-list" class="alerts-list">
+            <p class="loading-text">Loading alerts...</p>
+        </div>
+    </div>
+
+    <!-- Sentiment History Chart -->
+    <div class="card">
+        <h2 class="card-title">Sentiment Over Time</h2>
+        <div class="chart-container">
+            <canvas id="sentiment-chart" width="800" height="300"></canvas>
+        </div>
+    </div>
+
+    <!-- Volume Chart -->
+    <div class="card">
+        <h2 class="card-title">Tweet Volume</h2>
+        <div class="chart-container">
+            <canvas id="volume-chart" width="800" height="250"></canvas>
+        </div>
+    </div>
+
+    <!-- Top Topics Table -->
+    <div class="card">
+        <h2 class="card-title">Top Topics</h2>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Topic</th>
+                    <th>Tweets</th>
+                    <th>Avg Sentiment</th>
+                    <th>Keywords</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for topic in topics %}
+                <tr>
+                    <td class="topic-name-cell">{{ topic.name }}</td>
+                    <td>{{ topic.tweet_count }}</td>
+                    <td class="{% if topic.avg_sentiment > 0.2 %}text-positive{% elif topic.avg_sentiment < -0.2 %}text-negative{% else %}text-neutral{% endif %}">
+                        {{ topic.avg_sentiment }}
+                    </td>
+                    <td>
+                        {% for kw in topic.keywords[:5] %}
+                        <span class="keyword-tag small">{{ kw }}</span>
+                        {% endfor %}
+                    </td>
+                </tr>
+                {% endfor %}
+                {% if not topics %}
+                <tr><td colspan="4" class="empty-cell">No topics yet</td></tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% block scripts %}
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const history = {{ history | tojson }};
+    if (history.length > 0) {
+        drawSentimentChart(history);
+        drawVolumeChart(history);
+    }
+    loadAlerts();
+});
+</script>
+{% endblock %}
+{% endblock %}

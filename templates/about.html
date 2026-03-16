@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% block title %}SentimentStream - About{% endblock %}
+
+{% block content %}
+<div class="about-page">
+    <div class="page-header">
+        <h1>About SentimentStream</h1>
+        <p class="subtitle">Real-time social media sentiment analysis platform</p>
+    </div>
+
+    <div class="card">
+        <h2 class="card-title">Overview</h2>
+        <p>
+            SentimentStream is a real-time social media sentiment analysis platform that
+            monitors a simulated tweet stream, classifies sentiment using a keyword-based
+            engine, clusters tweets into topics, and detects emerging trends.
+        </p>
+        <p>
+            No external APIs or machine learning models are required. All sentiment
+            analysis is performed using curated word lists with modifier handling
+            (intensifiers and negations).
+        </p>
+    </div>
+
+    <div class="about-stats">
+        <div class="stat-card">
+            <div class="stat-value">{{ total_tweets }}</div>
+            <div class="stat-label">Tweets Analyzed</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">{{ topic_count }}</div>
+            <div class="stat-label">Topics Detected</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">200+</div>
+            <div class="stat-label">Sentiment Keywords</div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2 class="card-title">Features</h2>
+        <ul class="feature-list">
+            <li><strong>Live Tweet Stream</strong> &mdash; Simulated tweets with realistic hashtags, mentions, and varied sentiment</li>
+            <li><strong>Keyword-Based Sentiment</strong> &mdash; Positive/negative/neutral classification with confidence scores</li>
+            <li><strong>Topic Clustering</strong> &mdash; Groups tweets by keyword frequency and co-occurrence</li>
+            <li><strong>Trend Detection</strong> &mdash; Volume spikes, sentiment shifts, and emerging topics</li>
+            <li><strong>Custom Text Analysis</strong> &mdash; Analyze any text for sentiment and extract key topics</li>
+            <li><strong>REST API</strong> &mdash; Full JSON API for programmatic access</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2 class="card-title">Tech Stack</h2>
+        <div class="tech-grid">
+            <div class="tech-item">
+                <strong>Backend</strong>
+                <span>Python 3.11+, FastAPI, SQLAlchemy</span>
+            </div>
+            <div class="tech-item">
+                <strong>Frontend</strong>
+                <span>Jinja2 Templates, Vanilla JS, CSS3</span>
+            </div>
+            <div class="tech-item">
+                <strong>Database</strong>
+                <span>SQLite</span>
+            </div>
+            <div class="tech-item">
+                <strong>Testing</strong>
+                <span>pytest, httpx</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2 class="card-title">API Endpoints</h2>
+        <table class="data-table">
+            <thead>
+                <tr><th>Method</th><th>Endpoint</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>GET</td><td>/api/tweets</td><td>List recent tweets</td></tr>
+                <tr><td>GET</td><td>/api/tweets/stream</td><td>Get latest batch from stream</td></tr>
+                <tr><td>POST</td><td>/api/tweets/generate</td><td>Generate new tweets</td></tr>
+                <tr><td>POST</td><td>/api/analyze</td><td>Analyze custom text</td></tr>
+                <tr><td>GET</td><td>/api/sentiment/stats</td><td>Aggregate sentiment stats</td></tr>
+                <tr><td>GET</td><td>/api/sentiment/history</td><td>Sentiment over time</td></tr>
+                <tr><td>GET</td><td>/api/topics</td><td>List all topics</td></tr>
+                <tr><td>GET</td><td>/api/topics/{id}</td><td>Topic details</td></tr>
+                <tr><td>POST</td><td>/api/topics/cluster</td><td>Run topic clustering</td></tr>
+                <tr><td>GET</td><td>/api/trends</td><td>Current trend data</td></tr>
+                <tr><td>GET</td><td>/api/trends/alerts</td><td>Alerts</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

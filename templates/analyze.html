@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block title %}SentimentStream - Analyze Text{% endblock %}
+
+{% block content %}
+<div class="analyze-page">
+    <div class="page-header">
+        <h1>Analyze Custom Text</h1>
+        <p class="subtitle">Enter any text to analyze its sentiment using our keyword-based engine</p>
+    </div>
+
+    <div class="card analyze-card">
+        <form id="analyze-form" onsubmit="analyzeText(event)">
+            <div class="form-group">
+                <label for="analyze-input">Enter text to analyze:</label>
+                <textarea
+                    id="analyze-input"
+                    class="form-textarea"
+                    rows="5"
+                    placeholder="Type or paste any text here... e.g., 'I love this amazing new product! It works great and the team did a fantastic job.'"
+                    maxlength="5000"
+                ></textarea>
+                <div class="char-count">
+                    <span id="char-counter">0</span> / 5000
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">
+                Analyze Sentiment
+            </button>
+        </form>
+    </div>
+
+    <!-- Results -->
+    <div class="card results-card" id="results-card" style="display: none;">
+        <h2 class="card-title">Analysis Results</h2>
+        <div class="results-grid">
+            <div class="result-gauge">
+                <canvas id="result-gauge" width="200" height="130"></canvas>
+                <div class="result-score" id="result-score">0.0</div>
+                <div class="result-label" id="result-label">--</div>
+            </div>
+            <div class="result-details">
+                <div class="detail-row">
+                    <span class="detail-label">Word Count:</span>
+                    <span class="detail-value" id="result-word-count">0</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Positive Words:</span>
+                    <div class="word-tags" id="positive-words"></div>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Negative Words:</span>
+                    <div class="word-tags" id="negative-words"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Examples -->
+    <div class="card">
+        <h2 class="card-title">Quick Examples</h2>
+        <div class="examples-list">
+            <button class="example-btn" onclick="setExample('I absolutely love this new product! It is amazing and works perfectly.')">
+                Positive example
+            </button>
+            <button class="example-btn" onclick="setExample('This is terrible. The service is awful and I am very disappointed with the results.')">
+                Negative example
+            </button>
+            <button class="example-btn" onclick="setExample('The quarterly report was released today. Revenue was 2.3 billion, which is in line with expectations.')">
+                Neutral example
+            </button>
+            <button class="example-btn" onclick="setExample('I do not like this product at all. It is not good and the quality is very poor.')">
+                Negation example
+            </button>
+        </div>
+    </div>
+</div>
+{% endblock %}

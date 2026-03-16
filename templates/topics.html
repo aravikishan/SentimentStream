@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %}SentimentStream - Topics{% endblock %}
+
+{% block content %}
+<div class="topics-page">
+    <div class="page-header">
+        <h1>Topic Clusters</h1>
+        <p class="subtitle">Topics detected from the tweet stream by keyword frequency and co-occurrence</p>
+    </div>
+
+    <div class="topics-actions">
+        <button class="btn btn-primary" onclick="runClustering()">
+            Run Clustering
+        </button>
+        <span class="topic-count">{{ topics|length }} topics detected</span>
+    </div>
+
+    <!-- Topic Bubbles -->
+    <div class="card">
+        <h2 class="card-title">Topic Bubble Chart</h2>
+        <div class="bubble-container">
+            <canvas id="topic-bubbles" width="800" height="400"></canvas>
+        </div>
+    </div>
+
+    <!-- Topic List -->
+    <div class="topics-grid">
+        {% for topic in topics %}
+        <div class="card topic-card">
+            <h3 class="topic-name">{{ topic.name }}</h3>
+            <div class="topic-stats">
+                <span class="topic-count-badge">{{ topic.tweet_count }} tweets</span>
+                <span class="topic-sentiment {% if topic.avg_sentiment > 0.2 %}sentiment-pos{% elif topic.avg_sentiment < -0.2 %}sentiment-neg{% else %}sentiment-neu{% endif %}">
+                    Sentiment: {{ topic.avg_sentiment }}
+                </span>
+            </div>
+            <div class="topic-keywords">
+                {% for kw in topic.keywords %}
+                <span class="keyword-tag">{{ kw }}</span>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+
+        {% if not topics %}
+        <div class="empty-state">
+            <p>No topics detected yet. Generate some tweets and run clustering.</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+{% block scripts %}
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const topics = {{ topics | tojson }};
+    if (topics.length > 0) {
+        drawTopicBubbles(topics);
+    }
+});
+</script>
+{% endblock %}
+{% endblock %}
