@@ -29,6 +29,7 @@ logger = logging.getLogger(__name__)
 stream_simulator: TweetStreamSimulator | None = None
 
 
+# Updated for clarity
 def seed_database() -> int:
     """Load seed data into the database if it is empty."""
     from models.schemas import Tweet, Topic
