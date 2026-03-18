@@ -1,0 +1,24 @@
+version: "3.9"
+
+services:
+  sentimentstream:
+    build: .
+    ports:
+      - "8009:8009"
+    environment:
+      - PORT=8009
+      - SECRET_KEY=change-me-in-production
+      - DATABASE_URL=sqlite:///instance/sentimentstream.db
+      - STREAM_INTERVAL=2.0
+      - STREAM_BATCH_SIZE=5
+    volumes:
+      - db_data:/app/instance
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8009/api/health')"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+volumes:
+  db_data:
