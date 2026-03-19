@@ -102,7 +102,7 @@ def create_app() -> FastAPI:
     app = FastAPI(
         title="SentimentStream",
         description="Real-time social media sentiment analysis",
-        version="1.0.0",
+        version="1.0.1",
         lifespan=lifespan,
     )
 
